@@ -21,7 +21,8 @@ import './NavBar.css';
 const NavBar = () => {
   return (
     <div>
-      <p>Holis soy la NavBar</p>
+      <p>imgtitulo - inputbusqueda - filtrardiets - ordenarA-Z-1-100</p>
+      <p> PAGINADO PREV 1-2-3-4-5-6-7-8-9-10-11-12 NEXT</p>
     </div>
   )
 }

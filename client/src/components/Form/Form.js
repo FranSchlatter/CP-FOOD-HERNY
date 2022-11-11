@@ -18,7 +18,12 @@ import './Form.css';
 const Form = () => {
   return (
     <div>
-      <p>Holis soy el formulario</p>
+      <p>name</p>
+      <p>img</p>
+      <p>description</p>
+      <p>steps</p>
+      <p>diets</p>
+      <p>image</p>
     </div>
   )
 }

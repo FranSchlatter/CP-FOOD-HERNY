@@ -38,6 +38,10 @@ module.exports = (sequelize) => {
         max: 100.0
       }
     },
+    image: {
+      type: DataTypes.TEXT,
+      defaultValue: "https://images.pexels.com/photos/2741448/pexels-photo-2741448.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
     steps:{
       type: DataTypes.TEXT,
       defaultValue: 'This recipe does not have a step by step',

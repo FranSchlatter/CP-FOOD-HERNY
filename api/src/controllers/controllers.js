@@ -28,8 +28,8 @@ const getRecipe = async () => {
 
 const createRecipe = async (body) => {
   if(!body.name || !body.description) throw new Error("Required fields need to be completed") // validar que name no tenga simbolos
-  const regex = /[A-Za-z0-9]/;
-  if(regex.test(body.name)) throw new Error("The name cannot have symbols");
+  // const regex = /[A-Za-z0-9]/;
+  // if(!regex.test(body.name)) throw new Error("The name cannot have symbols");
   if(body.health_score && body.health_score < 1 || body.health_score > 100) throw new Error("Health score must be a number between 1 and 100") // no tira error si es 0
   const newRecipe = await Recipe.create(body)
   await newRecipe.addDiet(body.diets) // body.diets recibe los UUIDV4 de las dietas NO EL NOMBRE
@@ -82,6 +82,7 @@ const searchRecipeId = async (id) => {
       recipes.diets.forEach(e => { arrDiets.push(e.name) })
       return {
         name: recipes.name,
+        image: recipes.image,
         description: recipes.description,
         health_score: recipes.health_score,
         steps: recipes.steps,
@@ -113,7 +114,7 @@ const getDiets = async () => {
     const apiFood = await fetch(testing).then(res => res.json())
     const infoDiets = apiFood.results.map (food => food.diets) // agarro solo las diets
     let repDiets = []
-    infoDiets.forEach(e => { repDiets = [...repDiets, ...e] }); // concateno arrays
+    infoDiets.forEach(e =>  repDiets = [...repDiets, ...e] ); // concateno arrays
     const filterDiets = []
     repDiets.filter(e => { if ( filterDiets.indexOf(e) === -1 ) filterDiets.push(e) }) // filtro para quedarme un valor por diets
     filterDiets.push("vegetarian")

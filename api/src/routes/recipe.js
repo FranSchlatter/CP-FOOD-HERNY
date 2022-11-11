@@ -18,7 +18,7 @@ const urlApi3 = `https://api.spoonacular.com/recipes/1/information?apiKey=41b718
 
 router.get("/", async(req, res) => {
   const { name } = req.query;
-  try { 
+  try {
     if (name) {
       let recipesN = await searchRecipeName(name)
       console.log(recipesN)
@@ -33,7 +33,7 @@ router.get("/", async(req, res) => {
 })
 
 router.post("/", async(req, res) => {
-  const { name, description, health_score, steps, diets } = req.body;
+  const { name, description, health_score, steps, diets, image } = req.body;
   try {
     const newRecipe = await createRecipe(req.body)
     res.status(200).send(newRecipe)

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from "../Card/Card"
 import * as actions from "../../redux/actions/index";
 import { NavLink } from "react-router-dom";
+import "./Cards.css";
 
 const Cards = () => {
   const recipes = useSelector(state => state.recipes);

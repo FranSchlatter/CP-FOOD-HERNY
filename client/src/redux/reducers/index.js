@@ -4,7 +4,7 @@ const initialState = {
   recipes: [],
   diets: [],
   recipeDetail: {},
-  email: {}
+  msj: ""
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,11 +14,11 @@ const rootReducer = (state = initialState, action) => {
     case GET_RECIPE_DETAILS:
       return {...state, recipeDetail: action.payload}
     case CREATE_RECIPE:
-      return {...state, recipes: state.recipes.concat(action.payload)}
+      return {...state, msj: action.payload}
     case DELETE_RECIPE:
-      return {...state, recipes: state.recipes.filter(mov => mov.id !== action.payload)}
+      return {...state, msj: action.payload}
     case UPDATE_RECIPE:
-      return {...state, email: action.payload}
+      return {...state, msj: action.payload}
     case GET_ALL_DIETS:
       return {...state, diets: action.payload}
     default:

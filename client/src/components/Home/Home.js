@@ -17,11 +17,12 @@ import { useDispatch } from 'react-redux';
 import * as actions from "./../../redux/actions/index";
 
 import './Home.css';
+import Cards from '../Cards/Cards';
 
 const Home = () => {
   return (
-    <div>
-      <p>Holis soy el homeeee</p>
+    <div className='main-conteiner'>
+      <Cards/>
     </div>
   )
 }

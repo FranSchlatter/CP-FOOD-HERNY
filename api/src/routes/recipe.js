@@ -21,6 +21,7 @@ router.get("/", async(req, res) => {
   try { 
     if (name) {
       let recipesN = await searchRecipeName(name)
+      console.log(recipesN)
       return res.status(200).send(recipesN)
     }
     

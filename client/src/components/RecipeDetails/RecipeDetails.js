@@ -1,21 +1,40 @@
-// Ruta de detalle de receta: debe contener
-
-// [ ] Los campos mostrados en la ruta principal para cada receta (imagen, nombre, tipo de plato y tipo de dieta)
-// [ ] Resumen del plato
-// [ ] Nivel de "comida saludable" (health score)
-// [ ] Paso a paso
-
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import * as actions from "./../../redux/actions/index";
-
+import {React, useEffect} from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import './RecipeDetails.css';
 
-const RecipeDetails = () => {
+const RecipeDetails = (props) => {
+  const recipeId = props.match.params.id
+
+  const dispatch = useDispatch();
+
+  const recipeDetail = useSelector(state => state.recipeDetail);
+
+  useEffect( () => dispatch( actions.getRecipeDetails(recipeId) ), [dispatch] )
+
+  // db no tiene img, tipo de plato ni res del plato
+
+  if(!isNaN(recipeId)) {
+    return (
+      <div>     
+        <h1>{recipeDetail.name}</h1>
+        <img className="card-img" src={recipeDetail.image} alt="img"/>
+        <h4>tipo de plato: {recipeDetail.dish_types}</h4>
+        <h4>healt score: {recipeDetail.health_score}</h4>
+        <h4>tipo de dieta: {recipeDetail.diets}</h4>
+        <h4>res plato: {recipeDetail.res}</h4>
+        <h4>steps: {recipeDetail.steps}</h4>
+      </div>
+    )
+  }
+
   return (
-    <div>
-      <p>Holis soy los RecipeDetails</p>
+    <div>     
+      <h1>{recipeDetail.name}</h1>
+      <img className="card-img" src={recipeDetail.image} alt="img"/>
+      <h4>healt score: {recipeDetail.health_score}</h4>
+      <h4>tipo de dieta: {recipeDetail.diets}</h4>
+      <h4>steps: {recipeDetail.steps}</h4>
     </div>
   )
 }

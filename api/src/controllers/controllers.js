@@ -33,8 +33,8 @@ const createRecipe = async (body) => {
   if(body.health_score && body.health_score < 1 || body.health_score > 100) throw new Error("Health score must be a number between 1 and 100") // no tira error si es 0
   const newRecipe = await Recipe.create(body)
   await newRecipe.addDiet(body.diets) // body.diets recibe los UUIDV4 de las dietas NO EL NOMBRE
-  // return "recipe created successfully"
-  return (newRecipe) // cual va?
+  return "recipe created successfully"
+  // return (newRecipe) // cual va?
 }
 
 const searchRecipeName = async (namesrc) => {

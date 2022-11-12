@@ -1,28 +1,41 @@
-// Ruta principal: debe contener
-
-// [ ] Input de búsqueda para encontrar recetas por nombre
-// [ ] Área donde se verá el listado de recetas. Deberá mostrar su:
-// Imagen
-// Nombre
-// Tipo de dieta (vegetariano, vegano, apto celíaco, etc)
-// [ ] Botones/Opciones para filtrar por por tipo de dieta
-// [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente las recetas por orden alfabético y por health score (nivel de comida saludable).
-// [ ] Paginado para ir buscando y mostrando las siguientes recetas, 9 recetas por pagina, mostrando las primeros 9 en la primer pagina.
-// IMPORTANTE: Dentro de la Ruta Principal se deben mostrar tanto las recetas traidas desde la API como así también las de la base de datos. 
-// Debido a que en la API existen alrededor de 5 mil recetas, por cuestiones de performance pueden tomar la simplificación de obtener y paginar las primeras 100.
-
-import React from 'react';
+import  { React, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from "./../../redux/actions/index";
+import Paginated from '../Paginated/Paginated';
 
 import './Home.css';
-import Cards from '../Cards/Cards';
+import Card from '../Card/Card';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const allRecipes = useSelector(state => state.recipes);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [recipesPerPage, setRecipesPerPage] = useState(9);
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+  useEffect( () => dispatch( actions.getAllRecipes() ), [dispatch] )
+
+  const paginated = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
+
+  
+
   return (
     <div className='main-conteiner'>
-      <Cards/>
+      <Paginated recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated}/>
+      {
+        currentRecipes && currentRecipes.map(rec => (
+          <div key={rec.id} className="card">
+            <NavLink to={`/home/recipe/${rec.id}`}>
+              <Card key={rec.id} id={rec.id} name={rec.name} image={rec.image} diets={rec.diets} dishtypes={rec.dish_types}/>
+            </NavLink>
+          </div>
+        ))
+      }
     </div>
   )
 }

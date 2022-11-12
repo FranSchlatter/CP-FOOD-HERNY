@@ -10,9 +10,7 @@ const RecipeDetails = (props) => {
 
   const recipeDetail = useSelector(state => state.recipeDetail);
 
-  useEffect( () => dispatch( actions.getRecipeDetails(recipeId) ), [dispatch] )
-
-  // db no tiene img, tipo de plato ni res del plato
+  useEffect( () => dispatch( actions.getRecipeDetails(recipeId) ) )
 
   if(!isNaN(recipeId)) {
     return (

@@ -16,25 +16,25 @@ const getRecipe = async () => {
       return {
         id: food.id,
         name: food.title,
+        health_score: food.healthScore,
         image: food.image,
         diets: food.vegetarian ? food.diets.concat("vegetarian") : food.diets
       }
     })
 
-    const recipes = await Recipe.findAll()
+    const recipes = await Recipe.findAll({include: Diet})
     if (recipes.length < 1 && infoFood.length < 1) throw new Error("There is no recipe available")
     else return [...infoFood, ...recipes]
 }
 
 const createRecipe = async (body) => {
-  if(!body.name || !body.description) throw new Error("Required fields need to be completed") // validar que name no tenga simbolos
-  // const regex = /[A-Za-z0-9]/;
-  // if(!regex.test(body.name)) throw new Error("The name cannot have symbols");
+  if(!body.name || !body.description) throw new Error("Required fields need to be completed") 
+  const regex = /[A-Za-z0-9]/;
+  if(!regex.test(body.name)) throw new Error("The name cannot have symbols"); // AL PERECER FUNCIONA...
   if(body.health_score && body.health_score < 1 || body.health_score > 100) throw new Error("Health score must be a number between 1 and 100") // no tira error si es 0
   const newRecipe = await Recipe.create(body)
   await newRecipe.addDiet(body.diets) // body.diets recibe los UUIDV4 de las dietas NO EL NOMBRE
   return "recipe created successfully"
-  // return (newRecipe) // cual va?
 }
 
 const searchRecipeName = async (namesrc) => {
@@ -45,6 +45,7 @@ const searchRecipeName = async (namesrc) => {
     return {
       id: food.id,
       name: food.title,
+      health_score: food.healthScore,
       image: food.image,
       diets: food.vegetarian ? food.diets.concat("vegetarian") : food.diets
     }
@@ -65,7 +66,6 @@ const searchRecipeId = async (id) => {
     const apiFood = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=27e278180a3f4ccb9545e6a16e521326`).then(res => res.json())
     if(apiFood.id) {
       return {
-        // id: apiFood.id,
         name: apiFood.title,
         image: apiFood.image,
         health_score: apiFood.healthScore,

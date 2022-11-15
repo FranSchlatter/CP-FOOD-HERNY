@@ -1,12 +1,17 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as actions from "./../../redux/actions/index";
-
 import './Form.css';
 
 const CreateRecipe = () => {
 
-  const [input, setInput] = React.useState({name:"", image:"", healthScore:1, description:"", diets:"", steps:""})
+  const [input, setInput] = React.useState({
+    name: "",
+    description: "", 
+    health_score: 1,
+    steps: "",
+    diets: ["2beac845-b424-4b9f-867b-a62f7b1d626b"]
+  })
 
   const dispatch = useDispatch()
 
@@ -15,9 +20,10 @@ const CreateRecipe = () => {
     setInput({...input, [e.target.name]: e.target.value})
   }
 
-  const msj = useSelector(state => state.msj)
+  // const msj = useSelector(state => state.msj)
 
   function makeRecipe (e) {
+    console.log(input)
     e.preventDefault();
     dispatch(actions.createRecipe(input))
   }
@@ -30,7 +36,7 @@ const CreateRecipe = () => {
         <label>Url-Image: </label>
         <input type="text" name="image" value={input.image} onChange={(e) => inputChange(e)}/>
         <label>Health Score: </label>
-        <input type="number" name="healthScore" value={input.healthScore} onChange={(e) => inputChange(e)}/>
+        <input type="number" name="health_score" value={input.health_score} onChange={(e) => inputChange(e)}/>
         <label>Diets: </label>
         <select>
           <option>Gluten Free</option>

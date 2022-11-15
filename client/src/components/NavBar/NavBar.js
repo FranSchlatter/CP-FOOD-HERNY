@@ -1,15 +1,14 @@
-import React from 'react';
+import  { React } from 'react';
 import { NavLink } from 'react-router-dom';
-
 import './NavBar.css';
 
 const NavBar = () => {
-  return (
+  return ( 
     <div className='nav'>
       <NavLink to={`/home`}>
         <button>Home</button>
       </NavLink>
-      <p>imgtitulo - inputbusqueda - filtrardiets - ordenarA-Z-1-100</p>
+      <h2>Panxchitos</h2>
       <NavLink to={`/home/create`}>
         <button>Create Recipe</button>
       </NavLink>

@@ -1,10 +1,14 @@
 import axios from "axios";
 
-export const GET_ALL_RECIPES = "GET_ALL_RECIPES"; // getRecipe  --- search by name???? 
-export const GET_RECIPE_DETAILS = "GET_RECIPE_DETAILS"; // searchRecipeId
-export const CREATE_RECIPE = "CREATE_RECIPE"; // createRecipe
-export const DELETE_RECIPE = "DELETE_RECIPE"; // deleteRecipeId
-export const UPDATE_RECIPE = "UPDATE_RECIPE"; // updateRecipeId
+export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
+export const GET_RECIPE_DETAILS = "GET_RECIPE_DETAILS";
+export const CREATE_RECIPE = "CREATE_RECIPE";
+export const DELETE_RECIPE = "DELETE_RECIPE";
+export const UPDATE_RECIPE = "UPDATE_RECIPE";
+
+export const ORDER_NAME = "ORDER_NAME";
+export const ORDER_HS = "ORDER_HS";
+export const ORDER_DIETS = "ORDER_DIETS";
 
 export const GET_ALL_DIETS = "GET_ALL_DIETS"; // getDiets - para el form > filtrado
 
@@ -14,12 +18,24 @@ export const getAllRecipes = () => {
     dispatch({type: GET_ALL_RECIPES, payload: allRecipes.data})
 }};
 
-//no anda
-export const getAllRecipesName = (name) => {
+// falta mostrar error si no existe ninguna receta con ese nombre
+export const getAllRecipesName = (payload) => {
   return async (dispatch) => {
-    const recipesName = await axios.get(`http://localhost:3001/recipes`, name)
+    const recipesName = await axios.get(`http://localhost:3001/recipes?name=${payload}`)
     dispatch({type: GET_ALL_RECIPES, payload: recipesName.data})
 }};
+
+export const orderName = (payload) => {
+  return { type: ORDER_NAME, payload }
+};
+
+export const orderHs = (payload) => {
+  return { type: ORDER_HS, payload }
+};
+
+export const orderDiets = (payload) => {
+  return { type: ORDER_DIETS, payload }
+};
 
 export const getRecipeDetails = (id) => {
   return async (dispatch) => {
@@ -28,10 +44,10 @@ export const getRecipeDetails = (id) => {
   }
 }
 
-export const createRecipe = (recipe) => {
+export const createRecipe = (payload) => {
   return async (dispatch) => {
-    const createdRecipe = await axios.post(`http://localhost:3001/recipes`, recipe)
-    dispatch({type: CREATE_RECIPE, payload: createdRecipe.data})
+    await axios.post(`http://localhost:3001/recipes`, payload)
+    dispatch({type: CREATE_RECIPE })
   }
 }
 
@@ -42,13 +58,14 @@ export const deleteRecipe = (id) => {
   }
 }
 
-export const updateRecipe = (recipe) => {
+export const updateRecipe = (payload) => {
   return async (dispatch) => {
-    const createdRecipe = await axios.post(`http://localhost:3001/recipes/modHS`, recipe)
-    dispatch({type: UPDATE_RECIPE, payload: createdRecipe.data})
+    await axios.put(`http://localhost:3001/recipes/modHS`, payload)
+    dispatch({type: UPDATE_RECIPE})
   }
 }
 
+// no sabria si anda o no xd
 export const getAllDiets = () => {
   return async (dispatch) => {
     const allDiets = await axios.get(`http://localhost:3001/diets`)

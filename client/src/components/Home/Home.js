@@ -10,11 +10,14 @@ import Card from '../Card/Card';
 const Home = () => {
   const dispatch = useDispatch();
   const allRecipes = useSelector(state => state.recipes);
+  const loading = useSelector(state => state.loading);
   const [currentPage, setCurrentPage] = useState(1)
   const [recipesPerPage, setRecipesPerPage] = useState(9);
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+  const [render, setRender] = useState(false)
   
   useEffect( () => dispatch( actions.getAllRecipes() ), [dispatch] )
 
@@ -23,12 +26,20 @@ const Home = () => {
   function recipesxpage(e) {
     setRecipesPerPage(e.target.value)
   }
+
+  if(loading) { 
+    return (
+      <div className='error'>
+        <h1>LOADING...</h1>
+      </div>
+    )
+  }
   
-  if(currentRecipes.length === 0) { // agregar timeout
+  if(currentRecipes.length === 0) {
     return (
       <div className='error'>
         <select onChange={(e) => recipesxpage(e)}>
-          <option>Recipes x pag</option>
+          <option hidden disabled selected value>Recipes per page</option>
           <option value={6}>6</option>
           <option value={9}>9</option>
           <option value={12}>12</option>
@@ -36,25 +47,16 @@ const Home = () => {
           <option value={20}>20</option>
         </select>
         <Paginated recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated} recipesxpage={recipesxpage}/>
-        <Filters paginated={paginated}/>
+        <Filters paginated={paginated} render={render} setRender={setRender}/>
         <h1>There are no matching recipes</h1>
       </div>
     )
   }
 
-  // lo que quiero hacer, es que cuando este cargando aparezca loading, pero caundo filtre por x y no haya nada... deberia mostrar otra cosa (muestra loading ahora)
-  // if(currentRecipes.length === 0) { // if loading true??
-  //   return (
-  //     <div className='error'>
-  //       <h1>Loading</h1>
-  //     </div>
-  //   )
-  // }
-
   return (
     <div className='main-conteiner'>
       <select onChange={(e) => recipesxpage(e)}>
-        <option>Recipes x pag</option>
+        <option hidden disabled selected value>Recipes per page</option>
         <option value={6}>6</option>
         <option value={9}>9</option>
         <option value={12}>12</option>
@@ -62,7 +64,7 @@ const Home = () => {
         <option value={20}>20</option>
       </select>
       <Paginated recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated} recipesxpage={recipesxpage}/>
-      <Filters paginated={paginated}/>
+      <Filters paginated={paginated} render={render} setRender={setRender}/>
       {
         currentRecipes && currentRecipes.map(rec => (
           <div key={rec.id} className="card">

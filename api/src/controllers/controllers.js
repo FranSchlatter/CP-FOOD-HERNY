@@ -56,14 +56,14 @@ const searchRecipeName = async (namesrc) => {
   if(recipes) {
     recipesFilter = recipes.filter(e => e.name.toLowerCase().includes(namesrc.toLowerCase()))
   }
-  if (recipesFilter.length < 1 && infoFoodRes.length < 1) throw new Error ("There is no recipe with that name")
-  else return [...infoFoodRes, ...recipesFilter]
+  // if (recipesFilter.length < 1 && infoFoodRes.length < 1) throw new Error ("There is no recipe with that name")
+  return [...infoFoodRes, ...recipesFilter]
 }
 
 const searchRecipeId = async (id) => {
   const regex = /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
   if(!isNaN(id) && id < 100000000){
-    const apiFood = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=27e278180a3f4ccb9545e6a16e521326`).then(res => res.json())
+    const apiFood = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=41b718782e9a4fa49e3471d2b73daaff`).then(res => res.json())
     if(apiFood.id) {
       return {
         name: apiFood.title,

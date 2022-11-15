@@ -3,19 +3,21 @@ import { useDispatch } from 'react-redux';
 import * as actions from "./../../redux/actions/index";
 import './Filters.css';
 
-const Filters = ({paginated}) => {
+const Filters = ({paginated, render, setRender}) => {
   const dispatch = useDispatch();
   
   function searchName(e) {
     dispatch(actions.getAllRecipesName(e.target.value))
   }
-  // anda pero si estas en pag 1, no se actualiza solo
+  
   function filterName(e) {
+    setRender(!render)
     dispatch(actions.orderName(e.target.value))
     paginated(1)
   }
-  // anda pero si estas en pag 1, no se actualiza solo
+  
   function filterHs(e) {
+    setRender(!render)
     dispatch(actions.orderHs(e.target.value))
     paginated(1)
   }
@@ -26,14 +28,14 @@ const Filters = ({paginated}) => {
   }
 
   function clearFilters() {
-    dispatch(actions.getAllRecipes())
+    window.location.href = "http://localhost:3000/home";
   }
  
   return ( 
     <div className='nav'>
       <input type="text" placeholder="Search recipe" onChange={(e) => searchName(e)}/>
       <select onChange={(e) => filterDiets(e)}>
-        <option>Filter by diet</option>
+        <option hidden disabled selected value>Filter by diets</option>
         <option value="gluten free">Gluten Free</option>
         <option value="dairy free">Dairy Free</option>
         <option value="lacto ovo vegetarian">Lacto Ovo Vegetarian</option>
@@ -51,12 +53,12 @@ const Filters = ({paginated}) => {
         <option value="low fodmap">Low Fodmap</option>
       </select>
       <select onChange={(e) => filterName(e)}>
-        <option>Order by name</option>
+        <option hidden disabled selected value>Sort by name</option>
         <option value="az">A-Z</option>
         <option value="za">Z-A</option>
       </select>
       <select onChange={(e) => filterHs(e)}>
-        <option>Order by health score</option>
+        <option hidden disabled selected value>Sort by health score</option>
         <option value="1">1-100</option>
         <option value="100">100-1</option>
       </select>

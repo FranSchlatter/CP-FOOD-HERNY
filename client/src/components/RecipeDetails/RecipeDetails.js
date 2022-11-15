@@ -5,14 +5,17 @@ import './RecipeDetails.css';
 
 const RecipeDetails = (props) => {
   const recipeId = props.match.params.id
+  console.log(recipeId)
 
   const [input, setInput] = useState({ id: "", health_score: 1 })
 
   const dispatch = useDispatch();
 
   const recipeDetail = useSelector(state => state.recipeDetail);
+  console.log(recipeDetail)
+  // const error = useSelector(state => state.error);
 
-  useEffect( () => dispatch( actions.getRecipeDetails(recipeId) ) )
+  useEffect( () => dispatch( actions.getRecipeDetails(recipeId) ), [dispatch] )
 
   function deleteRec() {
     dispatch( actions.deleteRecipe(recipeId));
@@ -29,19 +32,20 @@ const RecipeDetails = (props) => {
   function submitHS(e) {
     e.preventDefault();
     dispatch(actions.updateRecipe(input));
-    alert("Recipe updated successfully");
   }
+
+  // if(error) { return ( <div> <h1>{error}</h1> </div> ) } 
 
   if(!isNaN(recipeId)) {
     return (
       <div>     
         <h1>{recipeDetail.name}</h1>
         <img className="card-img" src={recipeDetail.image} alt="img"/>
-        <h4>tipo de plato: {recipeDetail.dish_types}</h4>
-        <h4>healt score: {recipeDetail.health_score}</h4>
-        <h4>tipo de dieta: {recipeDetail.diets}</h4>
-        <h4>res plato: {recipeDetail.res}</h4>
-        <h4>steps: {recipeDetail.steps}</h4>
+        <h4>Dish types: {recipeDetail.dish_types}</h4>
+        <h4>Health score: {recipeDetail.health_score}</h4>
+        <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
+        <h4>Description: {recipeDetail.res}</h4>
+        <h4>Step-by-step: {recipeDetail.steps}</h4>
       </div>
     )
   }
@@ -50,10 +54,10 @@ const RecipeDetails = (props) => {
     <div>     
       <h1>{recipeDetail.name}</h1>
       <img className="card-img" src={recipeDetail.image} alt="img"/>
-      <h4>healt score: {recipeDetail.health_score}</h4>
-      <h4>tipo de dieta: {recipeDetail.diets}</h4>
-      <h4>steps: {recipeDetail.steps}</h4>
-      <label>Health Score: </label>
+      <h4>Health score: {recipeDetail.health_score}</h4>
+      <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
+      <h4>Step-by-step: {recipeDetail.steps}</h4>
+      <label>Change health-score: </label>
       <form onSubmit={(e) => submitHS(e)}>
         <input type="number" placeholder="Update health score" onChange={(e) => inputChangeHs(e)}/>
         <button type="submit">Update HS</button>
@@ -63,6 +67,4 @@ const RecipeDetails = (props) => {
   )
 }
 
-{/* <input type="number" placeholder="Update health score" onChange={(e) => inputChangeHs(e)}/>
-<button onClick={() => submitHS()}>Update HS</button> */}
 export default RecipeDetails;

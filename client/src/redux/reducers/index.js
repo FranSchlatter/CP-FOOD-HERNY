@@ -1,16 +1,16 @@
-import { GET_ALL_RECIPES, GET_RECIPE_DETAILS, CREATE_RECIPE,DELETE_RECIPE, UPDATE_RECIPE, GET_ALL_DIETS, ORDER_NAME, ORDER_HS, ORDER_DIETS} from "../actions";
+import { GET_ALL_RECIPES, GET_RECIPE_DETAILS, CREATE_RECIPE,DELETE_RECIPE, UPDATE_RECIPE, GET_ALL_DIETS, ORDER_NAME, ORDER_HS, ORDER_DIETS, ERROR} from "../actions";
 
 const initialState = {
   recipes: [],
+  loading: true,
   diets: [], // no tienen uso
-  recipeDetail: {}, 
-  msj: "" // no tienen uso
+  recipeDetail: {}
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_RECIPES:
-      return {...state, recipes: action.payload}
+      return {...state, recipes: action.payload, loading: false}
     case GET_RECIPE_DETAILS:
       return {...state, recipeDetail: action.payload}
     case ORDER_NAME:

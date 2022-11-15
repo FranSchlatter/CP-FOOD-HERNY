@@ -10,7 +10,7 @@ const CreateRecipe = () => {
     description: "", 
     health_score: 1,
     steps: "",
-    diets: ["2beac845-b424-4b9f-867b-a62f7b1d626b"]
+    diets: ["2beac845-b424-4b9f-867b-a62f7b1d626b"] // falta editar, hardcodeado
   })
 
   const dispatch = useDispatch()
@@ -20,10 +20,7 @@ const CreateRecipe = () => {
     setInput({...input, [e.target.name]: e.target.value})
   }
 
-  // const msj = useSelector(state => state.msj)
-
   function makeRecipe (e) {
-    console.log(input)
     e.preventDefault();
     dispatch(actions.createRecipe(input))
   }
@@ -32,7 +29,7 @@ const CreateRecipe = () => {
     <div className='form'>
       <form onSubmit={(e) => makeRecipe(e)}>
         <label>Name: </label>
-        <input type="text" name="name" value={input.name} onChange={(e) => inputChange(e)}/>
+        <input required type="text" name="name" value={input.name} onChange={(e) => inputChange(e)}/>
         <label>Url-Image: </label>
         <input type="text" name="image" value={input.image} onChange={(e) => inputChange(e)}/>
         <label>Health Score: </label>
@@ -56,7 +53,7 @@ const CreateRecipe = () => {
           <option>Low Fodmap</option>
         </select>
         <label>Description: </label>
-        <textarea type="text" name="description" value={input.description} onChange={(e) => inputChange(e)}/>
+        <textarea required type="text" name="description" value={input.description} onChange={(e) => inputChange(e)}/>
         <label>Steps: </label>
         <input type="text" name="steps" value={input.steps} onChange={(e) => inputChange(e)}/>
         <button type="submit">Create Recipe</button>

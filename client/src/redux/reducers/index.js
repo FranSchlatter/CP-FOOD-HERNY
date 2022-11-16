@@ -36,7 +36,7 @@ const rootReducer = (state = initialState, action) => {
       return {...state, msj: action.payload}
     case UPDATE_RECIPE:
       return {...state, msj: action.payload}
-    case GET_ALL_DIETS: // no se si anda la vd jaja
+    case GET_ALL_DIETS:
       return {...state, diets: action.payload}
     default:
       return {...state}

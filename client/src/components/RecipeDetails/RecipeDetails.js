@@ -12,8 +12,6 @@ const RecipeDetails = (props) => {
   const dispatch = useDispatch();
 
   const recipeDetail = useSelector(state => state.recipeDetail);
-  console.log(recipeDetail)
-  // const error = useSelector(state => state.error);
 
   useEffect( () => dispatch( actions.getRecipeDetails(recipeId) ), [dispatch] )
 
@@ -33,8 +31,6 @@ const RecipeDetails = (props) => {
     e.preventDefault();
     dispatch(actions.updateRecipe(input));
   }
-
-  // if(error) { return ( <div> <h1>{error}</h1> </div> ) } 
 
   if(!isNaN(recipeId)) {
     return (
@@ -56,6 +52,7 @@ const RecipeDetails = (props) => {
       <img className="card-img" src={recipeDetail.image} alt="img"/>
       <h4>Health score: {recipeDetail.health_score}</h4>
       <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
+      <h4>Description: {recipeDetail.description}</h4>
       <h4>Step-by-step: {recipeDetail.steps}</h4>
       <label>Change health-score: </label>
       <form onSubmit={(e) => submitHS(e)}>

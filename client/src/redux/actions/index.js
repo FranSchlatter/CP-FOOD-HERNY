@@ -54,7 +54,6 @@ export const orderDiets = (payload) => {
 export const getRecipeDetails = (id) => {
   return async (dispatch) => {
     try{
-      console
       const recipeId = await axios.get(`http://localhost:3001/recipes/${id}`)
       dispatch({type: GET_RECIPE_DETAILS, payload: recipeId.data})
     }
@@ -100,7 +99,11 @@ export const updateRecipe = (payload) => {
 // no sabria si anda o no xd
 export const getAllDiets = () => {
   return async (dispatch) => {
-    const allDiets = await axios.get(`http://localhost:3001/diets`)
-    dispatch({type: DELETE_RECIPE, payload: allDiets.data})
+    try {
+      const allDiets = await axios.get(`http://localhost:3001/diets`)
+      dispatch({type: GET_ALL_DIETS, payload: allDiets.data})
+    } catch (e) {
+      alert("Error conection")
+    }
   }
 }

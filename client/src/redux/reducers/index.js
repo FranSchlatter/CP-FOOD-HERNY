@@ -1,9 +1,9 @@
-import { GET_ALL_RECIPES, GET_RECIPE_DETAILS, CREATE_RECIPE,DELETE_RECIPE, UPDATE_RECIPE, GET_ALL_DIETS, ORDER_NAME, ORDER_HS, ORDER_DIETS, ERROR} from "../actions";
+import { GET_ALL_RECIPES, GET_RECIPE_DETAILS, CREATE_RECIPE,DELETE_RECIPE, UPDATE_RECIPE, GET_ALL_DIETS, ORDER_NAME, ORDER_HS, ORDER_DIETS} from "../actions";
 
 const initialState = {
   recipes: [],
   loading: true,
-  diets: [], // no tienen uso
+  diets: [],
   recipeDetail: {}
 };
 

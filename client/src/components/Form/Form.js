@@ -13,6 +13,14 @@ const CreateRecipe = () => {
 
   const [arrDiets, setArrDiets] = useState([])
 
+  const [errors, setErrors] = useState({
+    name:"",
+    hs:"",
+    diets:"",
+    description:"",
+    steps:""
+  })
+
   const [input, setInput] = useState({
     name: "",
     description: "", 
@@ -21,9 +29,25 @@ const CreateRecipe = () => {
     diets: []
   })
 
+  function validated (input) {
+    let needFix = {}
+    if(!input.name) needFix.name = "This field must be filled"
+    if(input.name.length < 5) needFix.name = "The name is too short, it needs at least 5 characters"
+    if(!input.health_score) needFix.hs = "This field must be filled"
+    if(input.health_score < 1) needFix.hs = "The health score cannot be less than 1"
+    if(input.health_score > 100) needFix.hs = "The health score cannot be greater than 100"
+    if(!input.description) needFix.description = "This field must be filled"
+    if(input.description.length < 10) needFix.description = "The description is too short, it needs at least 10 characters"
+    if(!input.steps) needFix.steps = "This field must be filled"
+    if(input.steps.length < 10) needFix.steps = "The step-by-step is too short, it needs at least 10 characters"
+    if(input.diets && input.diets.length < 1) needFix.diets = "You need to add and save at least one diet"
+    return needFix
+  }
+
   function inputChange (e) {
     e.preventDefault();
     setInput({...input, [e.target.name]: e.target.value})
+    setErrors(validated({...input, [e.target.name]: e.target.value}))
   }
 
   function makeRecipe (e) {
@@ -40,9 +64,7 @@ const CreateRecipe = () => {
   function appdiets () {
     let arrDietsId = []
     arrDiets.map(diet => {
-      allDiets.map(dietdb => {
-        if(diet === dietdb.name) arrDietsId.push(dietdb.id)
-      })
+      allDiets.map(dietdb => { if(diet === dietdb.name) arrDietsId.push(dietdb.id) })
     })
     setInput({...input, diets: arrDietsId})
   }
@@ -57,36 +79,53 @@ const CreateRecipe = () => {
   return (
     <div className='form'>
       <form onSubmit={(e) => makeRecipe(e)}>
-        <label>Name: </label>
-        <input required type="text" name="name" value={input.name} onChange={(e) => inputChange(e)}/>
-        <label>Url-Image: </label>
-        <input type="text" name="image" value={input.image} onChange={(e) => inputChange(e)}/>
-        <label>Health Score: </label>
-        <input type="number" name="health_score" value={input.health_score} onChange={(e) => inputChange(e)}/>
-        <label>Diets: </label>
-        <select onChange={(e) => pushDiet(e)}>
-        <option hidden disabled selected value>Select diets</option>
-          {
-            allDiets && allDiets.map(d => ( <option value={d.name} key={d.id}>{d.name}</option> ))
-          }
-        </select>
         <div>
-          <p>Diets selected: </p>
-          {
-            arrDiets && arrDiets.map(d => ( 
-            <div>
-              <p>{d}</p> 
-              <button value={d} onClick={(e) => removeArr(e)}>x</button>
-            </div>
-            ))
-          }
+          <label>Name: </label>
+          <input required type="text" name="name" value={input.name} onChange={(e) => inputChange(e)}/>
+          { errors.name && (<p>{errors.name}</p>) }
         </div>
-        <button type='button' onClick={() => appdiets()}>Save diets</button>
-        <label>Description: </label>
-        <textarea required type="text" name="description" value={input.description} onChange={(e) => inputChange(e)}/>
-        <label>Steps: </label>
-        <input type="text" name="steps" value={input.steps} onChange={(e) => inputChange(e)}/>
-        <button type="submit">Create Recipe</button>
+        <div>
+          <label>Url-Image: </label>
+          <input type="text" name="image" value={input.image} onChange={(e) => inputChange(e)}/>
+        </div>
+        <div>
+          <label>Health Score: </label>
+          <input type="number" name="health_score" value={input.health_score} onChange={(e) => inputChange(e)}/>
+          { errors.hs && (<p>{errors.hs}</p>) }
+        </div>
+        <div>
+          <label>Diets: </label>
+          <select onChange={(e) => pushDiet(e)}>
+          <option hidden disabled selected value>Select diets</option>
+            {
+              allDiets && allDiets.map(d => ( <option value={d.name} key={d.id}>{d.name}</option> ))
+            }
+          </select>
+          <div>
+            <p>Diets selected: </p>
+            { errors.diets && (<p>{errors.diets}</p>) }
+            {
+              arrDiets && arrDiets.map(d => ( 
+              <div>
+                <p>{d}</p> 
+                <button value={d} onClick={(e) => removeArr(e)}>x</button>
+              </div>
+              ))
+            }
+          </div>
+          <button type='button' onClick={() => appdiets()}>Save diets</button>
+        </div>
+        <div>
+          <label>Description: </label>
+          <textarea required type="text" name="description" value={input.description} onChange={(e) => inputChange(e)}/>
+          { errors.description && (<p>{errors.description}</p>) }
+        </div>
+        <div>
+          <label>Steps: </label>
+          <input type="text" name="steps" value={input.steps} onChange={(e) => inputChange(e)}/>
+          { errors.steps && (<p>{errors.steps}</p>) }
+        </div>
+        <button type="submit" disabled={errors.name || errors.hs || errors.description || errors.steps}>Create Recipe</button>
       </form>
     </div>
   );

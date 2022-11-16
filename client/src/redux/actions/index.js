@@ -5,14 +5,11 @@ export const GET_RECIPE_DETAILS = "GET_RECIPE_DETAILS";
 export const CREATE_RECIPE = "CREATE_RECIPE";
 export const DELETE_RECIPE = "DELETE_RECIPE";
 export const UPDATE_RECIPE = "UPDATE_RECIPE";
+export const GET_ALL_DIETS = "GET_ALL_DIETS";
 
 export const ORDER_NAME = "ORDER_NAME";
 export const ORDER_HS = "ORDER_HS";
 export const ORDER_DIETS = "ORDER_DIETS";
-
-export const ERROR = "ERROR";
-
-export const GET_ALL_DIETS = "GET_ALL_DIETS"; // getDiets - para el form > filtrado
 
 export const getAllRecipes = () => {
   return async (dispatch) => {
@@ -21,7 +18,6 @@ export const getAllRecipes = () => {
       dispatch({type: GET_ALL_RECIPES, payload: allRecipes.data})
     }
     catch (e) {
-      // dispatch({type: ERROR, payload: e.response.data})
       alert("There was a connection error, please try again later")
     }
     
@@ -34,7 +30,6 @@ export const getAllRecipesName = (payload) => {
       dispatch({type: GET_ALL_RECIPES, payload: recipesName.data})
     }
     catch (e) {
-      // dispatch({type: ERROR, payload: e.response.data})
       alert(e.response.data)
     }
 }};
@@ -96,7 +91,6 @@ export const updateRecipe = (payload) => {
   }
 }
 
-// no sabria si anda o no xd
 export const getAllDiets = () => {
   return async (dispatch) => {
     try {

@@ -5,7 +5,6 @@ import './RecipeDetails.css';
 
 const RecipeDetails = (props) => {
   const recipeId = props.match.params.id
-  console.log(recipeId)
 
   const [input, setInput] = useState({ id: "", health_score: 1 })
 
@@ -54,11 +53,13 @@ const RecipeDetails = (props) => {
       <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
       <h4>Description: {recipeDetail.description}</h4>
       <h4>Step-by-step: {recipeDetail.steps}</h4>
-      <label>Change health-score: </label>
-      <form onSubmit={(e) => submitHS(e)}>
-        <input type="number" placeholder="Update health score" onChange={(e) => inputChangeHs(e)}/>
-        <button type="submit">Update HS</button>
-      </form>
+      <div>
+        <label>Change health-score: </label>
+        <form onSubmit={(e) => submitHS(e)}>
+          <input required min={1} max={100} type="number" placeholder="Update health score" onChange={(e) => inputChangeHs(e)}/>
+          <button type="submit">Update HS</button>
+        </form>
+      </div>
       <button onClick={() => deleteRec()}>Delete</button>
     </div>
   )

@@ -77,8 +77,8 @@ const CreateRecipe = () => {
   }
 
   return (
-    <div className='form'>
-      <form onSubmit={(e) => makeRecipe(e)}>
+    <div className='div-form'>
+      <form className='form' onSubmit={(e) => makeRecipe(e)}>
         <div>
           <label>Name: </label>
           <input required type="text" name="name" value={input.name} onChange={(e) => inputChange(e)}/>

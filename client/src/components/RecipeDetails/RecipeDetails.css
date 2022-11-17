@@ -1,0 +1,29 @@
+.rec-main-api {
+  border: 1px solid red;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto;
+  padding: 8px;
+}
+
+.rec-main-api img {
+  width: 100%;
+}
+
+.rec-main-api .left {
+  width: 48%;
+  border: 1px solid black;
+  padding: 12px;
+}
+
+.rec-main-api .right {
+  width: 48%;
+  border: 1px solid black;
+  padding: 12px;
+}
+
+.rec-main-api .right * {
+  margin: 60px 0px;
+}

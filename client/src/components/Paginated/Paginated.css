@@ -1,0 +1,18 @@
+.paginated{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.paginated li a{
+  border: 1px solid red;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.paginated li a:hover{
+  cursor: pointer;
+  border: 1px solid green;
+
+}

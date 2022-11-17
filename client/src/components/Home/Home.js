@@ -30,45 +30,55 @@ const Home = () => {
   if(loading) { 
     return (
       <div className='error'>
-        <h1>LOADING...</h1>
+        <h3>L O A D I N G</h3>
       </div>
     )
   }
   
   if(currentRecipes.length === 0) {
     return (
-      <div className='error'>
-        <select onChange={(e) => recipesxpage(e)}>
-          <option hidden disabled selected value>Recipes per page</option>
-          <option value={6}>6</option>
-          <option value={9}>9</option>
-          <option value={12}>12</option>
-          <option value={16}>16</option>
-          <option value={20}>20</option>
-        </select>
-        <Paginated recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated} recipesxpage={recipesxpage}/>
-        <Filters paginated={paginated} render={render} setRender={setRender}/>
-        <h1>There are no matching recipes</h1>
+       <div>
+        <div className='pag-main'>
+          <div className='pag-main2'>
+            <select onChange={(e) => recipesxpage(e)}>
+              <option hidden disabled selected value>Recipes per page</option>
+              <option value={6}>6</option>
+              <option value={9}>9</option>
+              <option value={12}>12</option>
+              <option value={16}>16</option>
+              <option value={20}>20</option>
+            </select>
+            <Paginated recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated} recipesxpage={recipesxpage}/>
+          </div>
+          <Filters paginated={paginated} render={render} setRender={setRender}/>
+        </div>
+        <div className='error2'>
+          <h1>There are no matching recipes</h1>
+        </div>
       </div>
     )
   }
 
   return (
     <div className='main-conteiner'>
-      <select onChange={(e) => recipesxpage(e)}>
-        <option hidden disabled selected value>Recipes per page</option>
-        <option value={6}>6</option>
-        <option value={9}>9</option>
-        <option value={12}>12</option>
-        <option value={16}>16</option>
-        <option value={20}>20</option>
-      </select>
-      <Paginated recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated} recipesxpage={recipesxpage}/>
-      <Filters paginated={paginated} render={render} setRender={setRender}/>
+      <div className='pag-main'>
+        <div className='pag-main2'>
+          <select onChange={(e) => recipesxpage(e)}>
+            <option hidden disabled selected value>Recipes per page</option>
+            <option value={6}>6</option>
+            <option value={9}>9</option>
+            <option value={12}>12</option>
+            <option value={16}>16</option>
+            <option value={20}>20</option>
+          </select>
+          <Paginated recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated} recipesxpage={recipesxpage}/>
+        </div>
+        <Filters paginated={paginated} render={render} setRender={setRender}/>
+      </div>
       {
         currentRecipes && currentRecipes.map(rec => (
           <div key={rec.id} className="card">
-            <NavLink to={`/home/recipe/${rec.id}`}>
+            <NavLink className="navlink" to={`/home/recipe/${rec.id}`}>
               <Card key={rec.id} id={rec.id} name={rec.name} image={rec.image} diets={rec.diets} health_score={rec.health_score}/> 
             </NavLink>
           </div>

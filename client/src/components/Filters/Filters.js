@@ -25,6 +25,7 @@ const Filters = ({paginated, render, setRender}) => {
   async function filterDiets(e) {
     await dispatch(actions.getAllRecipes())
     await dispatch(actions.orderDiets(e.target.value))
+    paginated(1)
   }
 
   function clearFilters() {
@@ -32,7 +33,7 @@ const Filters = ({paginated, render, setRender}) => {
   }
  
   return ( 
-    <div className='nav'>
+    <div className='filters-main'>
       <input type="text" placeholder="Search recipe" onChange={(e) => searchName(e)}/>
       <select onChange={(e) => filterDiets(e)}>
         <option hidden disabled selected value>Filter by diets</option>

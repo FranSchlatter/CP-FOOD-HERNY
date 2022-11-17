@@ -15,9 +15,11 @@ const RecipeDetails = (props) => {
   useEffect( () => dispatch( actions.getRecipeDetails(recipeId) ), [dispatch] )
 
   function deleteRec() {
-    dispatch( actions.deleteRecipe(recipeId));
-    alert("Recipe deleted successfully");
-    window.location.href = "http://localhost:3000/home";
+    if(window.confirm("Do you really want to delete this recipe?")){
+      dispatch( actions.deleteRecipe(recipeId));
+      alert("Recipe deleted successfully");
+      window.location.href = "http://localhost:3000/home";
+    }    
   }
 
   function inputChangeHs (e) {
@@ -33,35 +35,41 @@ const RecipeDetails = (props) => {
 
   if(!isNaN(recipeId)) {
     return (
-      <div>     
-        <h1>{recipeDetail.name}</h1>
-        <img className="card-img" src={recipeDetail.image} alt="img"/>
-        <h4>Dish types: {recipeDetail.dish_types}</h4>
-        <h4>Health score: {recipeDetail.health_score}</h4>
-        <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
-        <h4>Description: {recipeDetail.res}</h4>
-        <h4>Step-by-step: {recipeDetail.steps}</h4>
+      <div className="rec-main-api">
+        <div className="left"> 
+          <h2>{recipeDetail.name}</h2>
+          <img className="card-img" src={recipeDetail.image} alt="img"/>
+          <h4>Dish types: {recipeDetail.dish_types}</h4>
+          <h4>Health score: {recipeDetail.health_score}</h4>
+          <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
+        </div> 
+        <div className="right"> 
+          <h5>Description: {recipeDetail.res}</h5>
+          <h5>Step-by-step: {recipeDetail.steps || "This recipe does not contain a step by step"}</h5>
+        </div>       
       </div>
     )
   }
 
   return (
-    <div>     
-      <h1>{recipeDetail.name}</h1>
-      <img className="card-img" src={recipeDetail.image} alt="img"/>
-      <h4>Health score: {recipeDetail.health_score}</h4>
-      <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
-      <h4>Description: {recipeDetail.description}</h4>
-      <h4>Step-by-step: {recipeDetail.steps}</h4>
-      <div>
-        <label>Change health-score: </label>
-        <form onSubmit={(e) => submitHS(e)}>
-          <input required min={1} max={100} type="number" placeholder="Update health score" onChange={(e) => inputChangeHs(e)}/>
+    <div className="rec-main-api">
+        <div className="left"> 
+          <h2>{recipeDetail.name}</h2>
+          <img className="card-img" src={recipeDetail.image} alt="img"/>
+          <h4>Health score: {recipeDetail.health_score}</h4>
+          <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
+          <form onSubmit={(e) => submitHS(e)}>
+            <label>Change health-score: </label>
+            <input required min={1} max={100} type="number" placeholder="Update" onChange={(e) => inputChangeHs(e)}/>
           <button type="submit">Update HS</button>
+          <button onClick={() => deleteRec()}>Delete</button>
         </form>
+        </div> 
+        <div className="right"> 
+          <h5>Description: {recipeDetail.description}</h5>
+          <h5>Step-by-step: {recipeDetail.steps || "This recipe does not contain a step by step"}</h5>
+        </div>     
       </div>
-      <button onClick={() => deleteRec()}>Delete</button>
-    </div>
   )
 }
 

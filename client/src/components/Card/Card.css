@@ -1,12 +1,16 @@
-.container {
-  width: 400px;
-  height: 600px;
-  border: 2px solid red;
-  overflow: hidden;
-  margin: 20px;
+.container .card-img{
+  width: 100%;
 }
 
-.container .card-img{
-  width: 100px;
-  height: 100px;
+.container .card-name{
+  margin: 10px;
+}
+
+.container .card-diets{
+  margin: 10px;
+}
+
+.container .card-hs{
+  margin: 10px;
+  color: red;
 }

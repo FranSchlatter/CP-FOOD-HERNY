@@ -33,6 +33,8 @@ const RecipeDetails = (props) => {
     dispatch(actions.updateRecipe(input));
   }
 
+  const regex = /( |<([^>]+)>)/ig; // elimina etiquetas HTML
+
   if(!isNaN(recipeId)) {
     return (
       <div className="rec-main-api">
@@ -44,8 +46,8 @@ const RecipeDetails = (props) => {
           <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
         </div> 
         <div className="right"> 
-          <h5>Description: {recipeDetail.res}</h5>
-          <h5>Step-by-step: {recipeDetail.steps || "This recipe does not contain a step by step"}</h5>
+          <h5>Description: {recipeDetail.res && recipeDetail.res.replace(regex, ' ')}</h5>
+          <h5>Step-by-step: {recipeDetail.steps && recipeDetail.steps.replace(regex, ' ') || "This recipe does not contain a step by step"}</h5>
         </div>       
       </div>
     )

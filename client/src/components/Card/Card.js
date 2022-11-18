@@ -7,21 +7,25 @@ function Card(props) {
     return (
       <div className="container">
         <img className="card-img" src={props.image} alt="img"/>
-        <h1 className="card-name">{props.name}</h1>
-        <h3 className="card-diets">Diets: {props.diets.join(", ")}</h3>
+        <div className="order-text">
+        <h2 className="card-name">{props.name}</h2>
+        <h4 className="card-diets">Diets: {props.diets.join(", ")}</h4>
         <h3 className="card-hs">Health score: {props.health_score}</h3>
+        </div>
       </div>
     );
   }
   return (
     <div className="container">
       <img className="card-img" src={props.image} alt="img"/>
-      <h1 className="card-name">{props.name}</h1>
+      <div className="order-text">
+      <h2 className="card-name">{props.name}</h2>
       { 
         props.diets && props.diets.map(e => { dietsDB.push(e.name) })
       }
-      <h3 className="card-diets">Diets: {dietsDB.join(", ")}</h3>
+      <h4 className="card-diets">Diets: {dietsDB.join(", ")}</h4>
       <h3 className="card-hs">Health score: {props.health_score}</h3>
+      </div>
     </div>
   );
   

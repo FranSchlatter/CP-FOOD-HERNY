@@ -1,5 +1,5 @@
 .nav {
-  background-color: aqua;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://img.freepik.com/vector-gratis/fondo-patrones-triangulares_1319-107.jpg");
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -8,16 +8,23 @@
 }
 
 .nav button{
-  background-color: rgb(160, 160, 160);
   width: 150px;
   height: 35px;
-  border: 1px solid red;
   border-radius: 8px;
+  background-color: white;
+  border: 2px solid rgb(253, 180, 180);
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 .nav button:hover{
-  background-color: red;
-  border: 1px solid rgb(160, 160, 160);
+  background-color: rgb(253, 180, 180);
+  border: 2px solid white;
   cursor: pointer;
   border-radius: 8px;
+}
+
+.nav h2{
+  color: rgb(217, 255, 205);
+  letter-spacing: 8px;
 }

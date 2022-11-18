@@ -6,8 +6,8 @@ import './LandingPage.css';
 const LandingPage = () => {
   return (
     <div className='landing'>
-      <p>Welcome to Panchitos</p>
-      <NavLink to={"/home"}><button>Home</button></NavLink>
+      <p>S</p>
+      <NavLink to={"/home"}><button>Start cooking</button></NavLink>
     </div>
   )
 }

@@ -59,7 +59,7 @@ const Filters = ({paginated, render, setRender}) => {
         <option value="za">Z-A</option>
       </select>
       <select onChange={(e) => filterHs(e)}>
-        <option hidden disabled selected value>Sort by health score</option>
+        <option hidden disabled selected value>Sort by healthy</option>
         <option value="1">1-100</option>
         <option value="100">100-1</option>
       </select>

@@ -2,6 +2,13 @@
   width: 100%;
 }
 
+.container .order-text{
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .container .card-name{
   margin: 10px;
 }
@@ -12,5 +19,5 @@
 
 .container .card-hs{
   margin: 10px;
-  color: red;
+  color: rgb(101, 161, 101);
 }

@@ -37,7 +37,7 @@ const Home = () => {
   
   if(currentRecipes.length === 0) {
     return (
-       <div>
+       <div className='bk'>
         <div className='pag-main'>
           <div className='pag-main2'>
             <select onChange={(e) => recipesxpage(e)}>
@@ -60,6 +60,7 @@ const Home = () => {
   }
 
   return (
+    <div>
     <div className='main-conteiner'>
       <div className='pag-main'>
         <div className='pag-main2'>
@@ -83,7 +84,9 @@ const Home = () => {
             </NavLink>
           </div>
         ))
-      }
+      }      
+    </div>
+      <h2>O crear un nuevo comp</h2>
     </div>
   )
 }

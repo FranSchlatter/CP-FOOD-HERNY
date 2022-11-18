@@ -4,7 +4,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  background-color: bisque;
 }
 
 .filters-main * {
@@ -12,11 +11,11 @@
   height: 28px;
   margin: 8px 20px;
   border-radius: 4px;
-  border: 1px solid greenyellow;
+  border: 1px solid #735F58;
 }
 
 .filters-main *:hover {
   margin: 8px 20px;
   border-radius: 4px;
-  border: 1px solid rgb(194, 28, 180);
+  border: 1px solid rgb(231, 218, 172);
 }

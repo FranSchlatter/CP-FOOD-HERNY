@@ -86,7 +86,17 @@ const Home = () => {
         ))
       }      
     </div>
-      <h2>O crear un nuevo comp</h2>
+      <div className='footer'>
+        <h2>Page created by: Francisco Schlatter</h2>
+        <div>
+          <a href='https://github.com/FranSchlatter/CP-FOOD-HERNY'>
+            <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/270/270798.png" alt="github"/>
+          </a>
+          <a href='https://www.linkedin.com/in/francisco-schlatter-a62667218/'> 
+            <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="linkedin"/>
+          </a>
+        </div>
+      </div>
     </div>
   )
 }

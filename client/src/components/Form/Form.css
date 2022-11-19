@@ -1,13 +1,118 @@
-.div-form {
-  border: 1px solid red;
-  width: 500px;
-  height: 700px;
-  margin: 50px auto;
+.bk-main {
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bk-main h1{
+  background-color: beige;
+  letter-spacing: 6px;
+  font-family: cursive;
+  margin: 10px;
 }
 
 .div-form {
+  border: 20px solid beige;
+  width: 600px;
+  height: 900px;
+  margin: 0px auto;
+  background-image: url("https://thumbs.dreamstime.com/b/fondo-para-cocinar-recetas-27254033.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  height: fit-content;
+  width: 400px;
+  height: 500px;
+  margin: 205px auto;
+}
+
+.input-label_cont{
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+}
+
+.input-label_cont label{
+  padding: 10px 20px 4px;
+  font-weight: 500;
+}
+
+.input-label_cont input{
+  background-color: transparent;
+}
+
+.input-error {
+  border: 1px solid rgb(121, 22, 22);
+}
+
+.input-label_cr{
+  margin: 4px 20px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label_cr button {
+  margin: 0px auto;
+  width: 200px;
+}
+
+.input-label_rec{
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  font-weight: 500;
+}
+
+.input-label_cont input{
+  width: 90%;
+  border-radius: 8px;
+  margin: auto;
+}
+
+.rec-details {
+  display: flex;
+  flex-direction: row;
+  margin: 4px 10px;
   align-items: center;
+}
+
+.rec-details button {
+  margin: 0px 4px;
+  border-radius: 20px;
+  padding: 4px;
+  border: none;
+  text-align: center;
+}
+
+.rec-details button{
+  width: 20px;
+  height: 20px;
+}
+
+.prueba{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.errors-red{
+  text-align: end;
+  margin-top: 0px;
+  padding: 5px 25px;
+  color: red;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.create-recipe {
+  width: 80%;
+  margin: 20px auto;
+  font-weight: 800;
+  letter-spacing: 4px;
 }

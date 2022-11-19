@@ -37,41 +37,81 @@ const RecipeDetails = (props) => {
 
   if(!isNaN(recipeId)) {
     return (
-      <div className="rec-main-api">
-        <div className="left"> 
-          <h2>{recipeDetail.name}</h2>
-          <img className="card-img" src={recipeDetail.image} alt="img"/>
-          <h4>Dish types: {recipeDetail.dish_types}</h4>
-          <h4>Health score: {recipeDetail.health_score}</h4>
-          <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
-        </div> 
-        <div className="right"> 
-          <h5>Description: {recipeDetail.res && recipeDetail.res.replace(regex, ' ')}</h5>
-          <h5>Step-by-step: {recipeDetail.steps && recipeDetail.steps.replace(regex, ' ') || "This recipe does not contain a step by step"}</h5>
-        </div>       
+      <div className="conteinter">
+        <div className="rec-main-api">
+          <div className="left"> 
+            <h2>{recipeDetail.name}</h2>
+            <img className="card-img" src={recipeDetail.image} alt="img"/>
+            <h4>Dish types: {recipeDetail.dish_types}</h4>
+            <h4 className="hs">Health score: {recipeDetail.health_score}</h4>
+            <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
+          </div> 
+          <div className="right"> 
+            <div>
+              <h3>Description</h3>
+              <h5>{recipeDetail.res && recipeDetail.res.replace(regex, ' ')}</h5>
+            </div>
+            <div>
+              <h3>Step-by-step</h3>
+              <h5>{recipeDetail.steps && recipeDetail.steps.replace(regex, ' ') || "This recipe does not contain a step by step"}</h5>
+            </div>
+          </div>       
+        </div>
+        <div className='footer2'>
+          <h2>Page created by: Francisco Schlatter</h2>
+          <div>
+            <a href='https://github.com/FranSchlatter/CP-FOOD-HERNY'>
+              <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/270/270798.png" alt="github"/>
+            </a>
+            <a href='https://www.linkedin.com/in/francisco-schlatter-a62667218/'> 
+              <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="linkedin"/>
+            </a>
+          </div>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="rec-main-api">
+    <div className="conteinter">
+      <div className="rec-main-api">
         <div className="left"> 
+        <div className="left-title">
           <h2>{recipeDetail.name}</h2>
+          <button onClick={() => deleteRec()}>Delete recipe</button>
+        </div>
           <img className="card-img" src={recipeDetail.image} alt="img"/>
-          <h4>Health score: {recipeDetail.health_score}</h4>
+          <h4 className="hs">Health score: {recipeDetail.health_score}</h4>
           <h4>Diet types: {recipeDetail.diets && recipeDetail.diets.join(", ")}</h4>
-          <form onSubmit={(e) => submitHS(e)}>
+          <form className="form-hs" onSubmit={(e) => submitHS(e)}>
             <label>Change health-score: </label>
             <input required min={1} max={100} type="number" placeholder="Update" onChange={(e) => inputChangeHs(e)}/>
           <button type="submit">Update HS</button>
-          <button onClick={() => deleteRec()}>Delete</button>
         </form>
-        </div> 
+        </div>
         <div className="right"> 
-          <h5>Description: {recipeDetail.description}</h5>
-          <h5>Step-by-step: {recipeDetail.steps || "This recipe does not contain a step by step"}</h5>
+          <div>
+            <h3>Description</h3>
+            <h5>{recipeDetail.description}</h5>
+          </div>
+          <div>
+            <h3>Step-by-step</h3>
+            <h5>{recipeDetail.steps || "This recipe does not contain a step by step"}</h5>
+          </div>
         </div>     
       </div>
+      <div className='footer2'>
+        <h2>Page created by: Francisco Schlatter</h2>
+        <div>
+          <a href='https://github.com/FranSchlatter/CP-FOOD-HERNY'>
+            <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/270/270798.png" alt="github"/>
+          </a>
+          <a href='https://www.linkedin.com/in/francisco-schlatter-a62667218/'> 
+            <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="linkedin"/>
+          </a>  
+        </div>
+      </div>
+    </div>
   )
 }
 

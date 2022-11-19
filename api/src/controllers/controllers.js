@@ -21,7 +21,6 @@ const getRecipe = async () => {
         diets: food.vegetarian ? food.diets.concat("vegetarian") : food.diets
       }
     })
-
     const recipes = await Recipe.findAll({include: Diet})
     if (recipes.length < 1 && infoFood.length < 1) throw new Error("There is no recipe available")
     else return [...infoFood, ...recipes]
@@ -51,7 +50,7 @@ const searchRecipeName = async (namesrc) => {
     }
   })
 
-  const recipes = await Recipe.findAll()
+  const recipes = await Recipe.findAll({include: Diet})
   let recipesFilter = []
   if(recipes) {
     recipesFilter = recipes.filter(e => e.name.toLowerCase().includes(namesrc.toLowerCase()))

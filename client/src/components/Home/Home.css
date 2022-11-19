@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .bk {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://cdn.fs.teachablecdn.com/yYUdS1xSIKHKXCAsKLET");
   width: 100%;
@@ -10,6 +16,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  min-height: 807px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://cdn.fs.teachablecdn.com/yYUdS1xSIKHKXCAsKLET");
 }
 
@@ -26,6 +33,7 @@
   align-items: center;
   width: 100%;
   border-bottom: 1px groove #F2F2F2;
+  height: 60px;
 }
 
 .pag-main select {
@@ -48,6 +56,7 @@
 .pag-main input:hover {
   background-color: white;
   border: 1px solid rgb(253, 180, 180);
+  cursor: pointer;
 }
 
 .pag-main button:hover {
@@ -94,4 +103,23 @@
   border: 1px solid rgb(87, 33, 33);
   border-radius: 20px;
   color: rgb(253, 180, 180);
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(41, 41, 41);
+}
+
+.footer h2{
+  color: beige;
+}
+
+.footer img {
+  margin: 0px 20px;
+  width: 40px;
 }

@@ -5,6 +5,7 @@
   width: 100%;
   align-items: center;
   justify-content: space-around;
+  height: 70px;
 }
 
 .nav button{
@@ -15,6 +16,7 @@
   border: 2px solid rgb(253, 180, 180);
   font-weight: 700;
   letter-spacing: 2px;
+  transition: all 1s ease;
 }
 
 .nav button:hover{

@@ -1,29 +1,95 @@
+.conteinter{
+  background-color: beige;
+  height: 92vh;
+}
+
 .rec-main-api {
-  border: 1px solid red;
   width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px auto;
-  padding: 8px;
+  margin: 0px auto;
+  border-bottom: 3px solid rgb(253, 180, 180);
+  font-family: cursive;
+}
+
+.rec-main-api *{
+  margin: 10px;
 }
 
 .rec-main-api img {
   width: 100%;
+  border-radius: 20px;
 }
 
 .rec-main-api .left {
   width: 48%;
-  border: 1px solid black;
   padding: 12px;
+}
+
+.rec-main-api .left .left-title { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 40px;
+}
+
+.rec-main-api .left .left-title button{ 
+  width: 120px;
+  height: 40px;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.rec-main-api .left .hs{
+  color: rgb(101, 161, 101);
 }
 
 .rec-main-api .right {
   width: 48%;
-  border: 1px solid black;
   padding: 12px;
 }
 
-.rec-main-api .right * {
+.rec-main-api .right div {
   margin: 60px 0px;
+  border-bottom: 1px solid black;
+}
+
+.form-hs {
+  width: 400px;
+}
+
+.form-hs *{
+  margin: 0px 12px 0px 0px;
+}
+
+.form-hs button{
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.footer2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(41, 41, 41);
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+}
+
+.footer2 h2{
+  color: beige;
+}
+
+.footer2 img {
+  margin: 0px 20px;
+  width: 40px;
 }

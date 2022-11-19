@@ -13,6 +13,29 @@
 
 .landing p {
   color: white;
+  font-family: cursive;
   font-size: 40px;
   font-weight: bold;
+}
+
+.landing .icono-img {
+  width: 100px;
+  margin: 100px;
+}
+
+.landing button {
+  color: #318aac;
+  border-radius: 12px;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 0.5em 1.2em;
+  background: rgba(0,0,0,0.3  );
+  border: 2px solid #318aac;
+  transition: all 1s ease;
+  position: relative;
+  cursor: pointer;
+}
+.landing button:hover {
+  background: #318aac;
+  color: #fff;
 }

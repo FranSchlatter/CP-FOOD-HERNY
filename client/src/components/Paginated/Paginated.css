@@ -7,7 +7,7 @@
 
 .paginated li a{
   color: #F2F2F2;
-  border: 1px solid #F2F2F2;
+  outline: 1px solid #F2F2F2;
   padding: 8px 12px;
   border-radius: 8px;
   margin: 10px;
@@ -15,11 +15,11 @@
 
 .paginated li a:hover{
   cursor: pointer;
-  border: 1px solid #F2F2F2;
+  outline: 1px solid #F2F2F2;
   color: #262625;
   background-color: #F2F2F2;
 }
 
 .paginated li .active {
-  border: 2px solid rgb(253, 180, 180);
+  outline: 2px solid rgb(253, 180, 180);
 }

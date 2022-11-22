@@ -1,10 +1,14 @@
-import { React } from 'react';
-import { useDispatch } from 'react-redux';
+import { React, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from "./../../redux/actions/index";
 import './Filters.css';
 
 const Filters = ({paginated, render, setRender}) => {
   const dispatch = useDispatch();
+
+  useEffect( () => dispatch( actions.getAllDiets() ), [dispatch] )
+
+  const allDiets = useSelector(state => state.diets);
   
   function searchName(e) {
     dispatch(actions.getAllRecipesName(e.target.value))
@@ -37,21 +41,11 @@ const Filters = ({paginated, render, setRender}) => {
       <input type="text" placeholder="Search recipe" onChange={(e) => searchName(e)}/>
       <select onChange={(e) => filterDiets(e)}>
         <option hidden disabled selected value>Filter by diets</option>
-        <option value="gluten free">Gluten Free</option>
-        <option value="dairy free">Dairy Free</option>
-        <option value="lacto ovo vegetarian">Lacto Ovo Vegetarian</option>
-        <option value="vegan">Vegan</option>
-        <option value="paleolithic">Paleolithic</option>
-        <option value="primal">Primal</option>
-        <option value="whole 30">Whole 30</option>
-        <option value="pescatarian">Pescatarian</option>
-        <option value="ketogenic">Ketogenic</option>
-        <option value="fodmap friendly">Fodmap Friendly</option>
-        <option value="vegetarian">Vegetarian</option>
-        <option value="lacto vegetarian">Lacto Vegetarian</option>
-        <option value="ovo vegetarian">Ovo Vegetarian</option>
-        <option value="paleo">Paleo</option>
-        <option value="low fodmap">Low Fodmap</option>
+        {
+          allDiets && allDiets.map(d =>(
+            <option value={d.name} key={d.id}>{d.name}</option>
+          ))
+        }
       </select>
       <select onChange={(e) => filterName(e)}>
         <option hidden disabled selected value>Sort by name</option>

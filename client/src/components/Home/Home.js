@@ -29,8 +29,14 @@ const Home = () => {
 
   if(loading) { 
     return (
-      <div className='error'>
-        <h3>L O A D I N G</h3>
+      <div className="spinner">
+        <span>L</span>
+        <span>O</span>
+        <span>A</span>
+        <span>D</span>
+        <span>I</span>
+        <span>N</span>
+        <span>G</span>
       </div>
     )
   }
@@ -89,13 +95,13 @@ const Home = () => {
       }      
     </div>
       <div className='footer'>
-        <h2>Page created by: Francisco Schlatter</h2>
+        <h2>Developed by: Francisco Schlatter</h2>
         <div>
           <a href='https://github.com/FranSchlatter/CP-FOOD-HERNY'>
             <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/270/270798.png" alt="github"/>
           </a>
           <a href='https://www.linkedin.com/in/francisco-schlatter-a62667218/'> 
-            <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="linkedin"/>
+            <img className="icono-img" src="https://cdn-icons-png.flaticon.com/512/3955/3955051.png" alt="linkedin"/>
           </a>
         </div>
       </div>

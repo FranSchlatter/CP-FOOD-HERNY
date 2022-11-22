@@ -12,9 +12,10 @@
 }
 
 .landing p {
-  color: white;
-  font-family: cursive;
+  color: #71ccf0;
+  font-family: monospace;
   font-size: 40px;
+  letter-spacing: 4px;
   font-weight: bold;
 }
 

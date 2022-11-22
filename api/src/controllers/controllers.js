@@ -2,7 +2,9 @@ const { Recipe, Diet } = require('../db.js')
 const {DB_APIKEY} = process.env;
 const fetch = require("node-fetch");
 
-const urlApi = `https://api.spoonacular.com/recipes/complexSearch?apiKey=41b718782e9a4fa49e3471d2b73daaff&addRecipeInformation=true&number=100`
+// 27e278180a3f4ccb9545e6a16e521326 41b718782e9a4fa49e3471d2b73daaff
+const urlApi = `https://api.spoonacular.com/recipes/complexSearch?apiKey=27e278180a3f4ccb9545e6a16e521326&addRecipeInformation=true&number=100`
+// const testing = `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`
 
 const getRecipe = async () => {
   getDiets() // ejecuto diets, cuando ingresa el usuario por primera vez para cargar en la db
@@ -57,7 +59,7 @@ const searchRecipeName = async (namesrc) => {
 const searchRecipeId = async (id) => {
   const regex = /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
   if(!isNaN(id) && id < 100000000){
-    const apiFood = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=41b718782e9a4fa49e3471d2b73daaff`).then(res => res.json())
+    const apiFood = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=27e278180a3f4ccb9545e6a16e521326`).then(res => res.json())
     if(apiFood.id) {
       return {
         name: apiFood.title,

@@ -81,8 +81,8 @@
 }
 
 .card:hover {
-  border: 2px solid white;
-  box-shadow: 5px 5px 5px 5px rgb(153, 153, 153);
+  border: 2px solid rgb(253, 180, 180);
+  box-shadow: 5px 5px 10px 10px rgba(253, 180, 180, 0.3)
 }
 
 .error {

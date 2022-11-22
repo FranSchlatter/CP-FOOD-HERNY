@@ -59,6 +59,8 @@ const Home = () => {
     )
   }
 
+  // aaaaaaaaaaaa
+
   return (
     <div>
     <div className='main-conteiner'>
@@ -72,7 +74,7 @@ const Home = () => {
             <option value={16}>16</option>
             <option value={20}>20</option>
           </select>
-          <Paginated recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated} recipesxpage={recipesxpage}/>
+          <Paginated currentPage={currentPage} recipesPerPage={recipesPerPage} allRecipes={allRecipes.length} paginated={paginated} recipesxpage={recipesxpage}/>
         </div>
         <Filters paginated={paginated} render={render} setRender={setRender}/>
       </div>

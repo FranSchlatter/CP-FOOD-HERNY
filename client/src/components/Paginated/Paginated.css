@@ -19,3 +19,7 @@
   color: #262625;
   background-color: #F2F2F2;
 }
+
+.paginated li .active {
+  border: 2px solid rgb(253, 180, 180);
+}

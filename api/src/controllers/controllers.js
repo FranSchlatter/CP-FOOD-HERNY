@@ -2,16 +2,11 @@ const { Recipe, Diet } = require('../db.js')
 const {DB_APIKEY} = process.env;
 const fetch = require("node-fetch");
 
-// ESTOY USANDO TESTING, CAMBIARLO EN UN FUTURO A LA API ORIGINAL (los fectchs tienen la ruta testing tmb)
-
 const urlApi = `https://api.spoonacular.com/recipes/complexSearch?apiKey=41b718782e9a4fa49e3471d2b73daaff&addRecipeInformation=true&number=100`
-
-// const idtest = `https://api.spoonacular.com/recipes/${id}/information?apiKey=27e278180a3f4ccb9545e6a16e521326`
-const testing = `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`
 
 const getRecipe = async () => {
   getDiets() // ejecuto diets, cuando ingresa el usuario por primera vez para cargar en la db
-  const apiFood = await fetch(testing).then(res => res.json())
+  const apiFood = await fetch(urlApi).then(res => res.json())
     const infoFood = apiFood.results.map (food => {
       return {
         id: food.id,
@@ -37,7 +32,7 @@ const createRecipe = async (body) => {
 }
 
 const searchRecipeName = async (namesrc) => {
-  const apiFood = await fetch(testing).then(res => res.json())
+  const apiFood = await fetch(urlApi).then(res => res.json())
   const infoFood = apiFood.results.filter (food => food.title.toLowerCase().includes(namesrc.toLowerCase()))
 
   const infoFoodRes = infoFood.map (food => {
@@ -110,7 +105,7 @@ const deleteRecipeId = async (id) => {
 const getDiets = async () => {
   let diets = await Diet.findAll()
   if (diets.length < 1) {
-    const apiFood = await fetch(testing).then(res => res.json())
+    const apiFood = await fetch(urlApi).then(res => res.json())
     const infoDiets = apiFood.results.map (food => food.diets) // agarro solo las diets
     let repDiets = []
     infoDiets.forEach(e =>  repDiets = [...repDiets, ...e] ); // concateno arrays

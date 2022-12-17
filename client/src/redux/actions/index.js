@@ -11,6 +11,8 @@ export const ORDER_NAME = "ORDER_NAME";
 export const ORDER_HS = "ORDER_HS";
 export const ORDER_DIETS = "ORDER_DIETS";
 
+export const SEARCHHS = "SEARCHHS";
+
 export const getAllRecipes = () => {
   return async (dispatch) => {
     try {
@@ -36,6 +38,10 @@ export const getAllRecipesName = (payload) => {
 
 export const orderName = (payload) => {
   return { type: ORDER_NAME, payload }
+};
+
+export const searchHS = (payload) => {
+  return { type: SEARCHHS, payload }
 };
 
 export const orderHs = (payload) => {
@@ -86,8 +92,7 @@ export const updateRecipe = (payload) => {
       alert("Recipe updated successfully");
     } catch (e) {
       alert(e.response.data)
-    }
-    
+    } 
   }
 }
 

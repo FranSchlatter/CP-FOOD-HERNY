@@ -35,6 +35,11 @@ const Filters = ({paginated, render, setRender}) => {
   function clearFilters() {
     window.location.href = "http://localhost:3000/home";
   }
+
+  function searchHs() {
+    dispatch(actions.searchHS())
+    paginated(1)
+  }
  
   return ( 
     <div className='filters-main'>
@@ -58,6 +63,7 @@ const Filters = ({paginated, render, setRender}) => {
         <option value="100">100-1</option>
       </select>
       <button onClick={() => clearFilters()}>Clear Filters</button>
+      <button onClick={() => searchHs()}>Search +70</button>
     </div>
   )
 }

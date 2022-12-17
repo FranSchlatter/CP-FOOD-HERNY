@@ -1,10 +1,11 @@
-import { GET_ALL_RECIPES, GET_RECIPE_DETAILS, CREATE_RECIPE,DELETE_RECIPE, UPDATE_RECIPE, GET_ALL_DIETS, ORDER_NAME, ORDER_HS, ORDER_DIETS} from "../actions";
+import { GET_ALL_RECIPES, GET_RECIPE_DETAILS, CREATE_RECIPE,DELETE_RECIPE, UPDATE_RECIPE, GET_ALL_DIETS, ORDER_NAME, ORDER_HS, ORDER_DIETS, SEARCHHS} from "../actions";
 
 const initialState = {
   recipes: [],
   loading: true,
   diets: [],
-  recipeDetail: {}
+  recipeDetail: {},
+  msj: ""
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -32,6 +33,10 @@ const rootReducer = (state = initialState, action) => {
       return {...state, recipes: orderArr3}
     case CREATE_RECIPE:
       return {...state, msj: action.payload}
+    case SEARCHHS:
+      let orderArr4 = [];
+      orderArr4 = state.recipes.filter(e => e.health_score > 70)
+      return {...state, recipes: orderArr4}
     case DELETE_RECIPE:
       return {...state, msj: action.payload}
     case UPDATE_RECIPE:

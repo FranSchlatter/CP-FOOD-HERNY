@@ -65,8 +65,6 @@ const Home = () => {
     )
   }
 
-  // aaaaaaaaaaaa
-
   return (
     <div>
     <div className='main-conteiner'>

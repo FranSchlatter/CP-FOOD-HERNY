@@ -16,7 +16,7 @@ export const SEARCHHS = "SEARCHHS";
 export const getAllRecipes = () => {
   return async (dispatch) => {
     try {
-      const allRecipes = await axios.get(`http://localhost:3001/recipes`)
+      const allRecipes = await axios.get(`/recipes`)
       dispatch({type: GET_ALL_RECIPES, payload: allRecipes.data})
     }
     catch (e) {
@@ -28,7 +28,7 @@ export const getAllRecipes = () => {
 export const getAllRecipesName = (payload) => {
   return async (dispatch) => {
     try{
-      const recipesName = await axios.get(`http://localhost:3001/recipes?name=${payload}`)
+      const recipesName = await axios.get(`/recipes?name=${payload}`)
       dispatch({type: GET_ALL_RECIPES, payload: recipesName.data})
     }
     catch (e) {
@@ -55,7 +55,7 @@ export const orderDiets = (payload) => {
 export const getRecipeDetails = (id) => {
   return async (dispatch) => {
     try{
-      const recipeId = await axios.get(`http://localhost:3001/recipes/${id}`)
+      const recipeId = await axios.get(`/recipes/${id}`)
       dispatch({type: GET_RECIPE_DETAILS, payload: recipeId.data})
     }
     catch (e) {
@@ -67,7 +67,7 @@ export const getRecipeDetails = (id) => {
 export const createRecipe = (payload) => {
   return async (dispatch) => {
     try {
-      await axios.post(`http://localhost:3001/recipes`, payload)
+      await axios.post(`/recipes`, payload)
       dispatch({type: CREATE_RECIPE })
       alert("Recipe created successfully");
       window.location.href = "http://localhost:3000/home";
@@ -79,7 +79,7 @@ export const createRecipe = (payload) => {
 
 export const deleteRecipe = (id) => {
   return async (dispatch) => {
-    const deletedRecipe = await axios.delete(`http://localhost:3001/recipes/delete/${id}`)
+    const deletedRecipe = await axios.delete(`/recipes/delete/${id}`)
     dispatch({type: DELETE_RECIPE, payload: deletedRecipe.data})
   }
 }
@@ -87,7 +87,7 @@ export const deleteRecipe = (id) => {
 export const updateRecipe = (payload) => {
   return async (dispatch) => {
     try {
-      await axios.put(`http://localhost:3001/recipes/modHS`, payload)
+      await axios.put(`/recipes/modHS`, payload)
       dispatch({type: UPDATE_RECIPE})
       alert("Recipe updated successfully");
     } catch (e) {
@@ -99,7 +99,7 @@ export const updateRecipe = (payload) => {
 export const getAllDiets = () => {
   return async (dispatch) => {
     try {
-      const allDiets = await axios.get(`http://localhost:3001/diets`)
+      const allDiets = await axios.get(`/diets`)
       dispatch({type: GET_ALL_DIETS, payload: allDiets.data})
     } catch (e) {
       alert("Error conection")

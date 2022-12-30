@@ -23,3 +23,19 @@
 .paginated li .active {
   outline: 2px solid rgb(253, 180, 180);
 }
+
+.paginated-buttons{
+  color: #F2F2F2;
+  background-color: transparent;
+  outline: 1px solid #F2F2F2;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.paginated-buttons:hover{
+  cursor: pointer;
+  outline: 1px solid #F2F2F2;
+  color: #262625;
+  background-color: #F2F2F2;
+}

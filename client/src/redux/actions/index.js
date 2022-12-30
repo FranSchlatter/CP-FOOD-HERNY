@@ -14,6 +14,8 @@ export const ORDER_DIETS = "ORDER_DIETS";
 export const FILTER_NAME = "FILTER_NAME";
 export const FILTER_HS70 = "FILTER_HS70";
 
+export const CURRENT_PAGE = "CURRENT_PAGE";
+
 export const getAllRecipes = () => {
   return async (dispatch) => {
     try {
@@ -104,3 +106,9 @@ export const orderHs = (payload) => {
 export const orderDiets = (payload) => {
   return { type: ORDER_DIETS, payload }
 };
+
+export const currentPage = (payload) => {
+  return { type: CURRENT_PAGE, payload }
+};
+
+

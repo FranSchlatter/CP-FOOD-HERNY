@@ -1,4 +1,4 @@
-import { GET_ALL_RECIPES, GET_RECIPE_DETAILS, CREATE_RECIPE, DELETE_RECIPE, UPDATE_RECIPE, GET_ALL_DIETS, CLEAR_FILTERS, FILTER_NAME, ORDER_NAME, ORDER_HS, ORDER_DIETS, FILTER_HS70} from "../actions";
+import { GET_ALL_RECIPES, GET_RECIPE_DETAILS, CREATE_RECIPE, DELETE_RECIPE, UPDATE_RECIPE, GET_ALL_DIETS, CLEAR_FILTERS, FILTER_NAME, ORDER_NAME, ORDER_HS, ORDER_DIETS, FILTER_HS70, CURRENT_PAGE} from "../actions";
 
 const initialState = {
   allrecipes: [],
@@ -6,7 +6,8 @@ const initialState = {
   loading: true,
   diets: [],
   recipeDetail: {},
-  msj: ""
+  msj: "",
+  currentPage: 1
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -50,6 +51,8 @@ const rootReducer = (state = initialState, action) => {
       let orderArr5 = [];
       orderArr5 = state.allrecipes.filter(e => e.name.toUpperCase().includes(action.payload.toUpperCase()))
       return {...state, recipes: orderArr5}
+    case CURRENT_PAGE:
+      return {...state, currentPage: action.payload}
     default:
       return {...state}
   }

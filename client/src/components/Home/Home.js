@@ -9,7 +9,7 @@ import Card from '../Card/Card';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const allRecipes = useSelector(state => state.recipes);
+  const allRecipes = useSelector(state => state.recipes); 
   const loading = useSelector(state => state.loading);
   const [currentPage, setCurrentPage] = useState(1)
   const [recipesPerPage, setRecipesPerPage] = useState(9);
@@ -21,10 +21,14 @@ const Home = () => {
   
   useEffect( () => dispatch( actions.getAllRecipes() ), [dispatch] )
 
-  const paginated = (pageNumber) => setCurrentPage(pageNumber)
+  const paginated = (pageNumber) => {
+    setCurrentPage(pageNumber)
+    dispatch(actions.currentPage(pageNumber))
+  }
 
   function recipesxpage(e) {
     setRecipesPerPage(e.target.value)
+    paginated(1)
   }
 
   if(loading) { 

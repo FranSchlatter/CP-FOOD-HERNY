@@ -45,7 +45,7 @@ export const createRecipe = (payload) => {
       await axios.post(`/recipes`, payload)
       dispatch({type: CREATE_RECIPE })
       alert("Recipe created successfully");
-      window.location.href = "http://localhost:3000/home";
+      window.location.href = "https://henry-food-franschlatter.vercel.app/home";
     } catch (e) {
       alert(e.response.data)
     }

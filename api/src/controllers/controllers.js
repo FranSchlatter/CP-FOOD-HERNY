@@ -3,7 +3,8 @@ const {DB_APIKEY} = process.env;
 const fetch = require("node-fetch");
 
 // 27e278180a3f4ccb9545e6a16e521326 41b718782e9a4fa49e3471d2b73daaff
-const urlApi = `https://api.spoonacular.com/recipes/complexSearch?apiKey=41b718782e9a4fa49e3471d2b73daaff&addRecipeInformation=true&number=100`
+const urlApi = `https://api.spoonacular.com/recipes/complexSearch?apiKey=27e278180a3f4ccb9545e6a16e521326&addRecipeInformation=true&number=100`
+// const urlApi = `https://api.spoonacular.com/recipes/complexSearch?apiKey=41b718782e9a4fa49e3471d2b73daaff&addRecipeInformation=true&number=100`
 // const testing = `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`
 
 const getRecipe = async () => {

@@ -7,11 +7,12 @@ export const DELETE_RECIPE = "DELETE_RECIPE";
 export const UPDATE_RECIPE = "UPDATE_RECIPE";
 export const GET_ALL_DIETS = "GET_ALL_DIETS";
 
+export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const ORDER_NAME = "ORDER_NAME";
 export const ORDER_HS = "ORDER_HS";
 export const ORDER_DIETS = "ORDER_DIETS";
-
-export const SEARCHHS = "SEARCHHS";
+export const FILTER_NAME = "FILTER_NAME";
+export const FILTER_HS70 = "FILTER_HS70";
 
 export const getAllRecipes = () => {
   return async (dispatch) => {
@@ -22,35 +23,7 @@ export const getAllRecipes = () => {
     catch (e) {
       alert("There was a connection error, please try again later")
     }
-    
 }};
-
-export const getAllRecipesName = (payload) => {
-  return async (dispatch) => {
-    try{
-      const recipesName = await axios.get(`/recipes?name=${payload}`)
-      dispatch({type: GET_ALL_RECIPES, payload: recipesName.data})
-    }
-    catch (e) {
-      alert(e.response.data)
-    }
-}};
-
-export const orderName = (payload) => {
-  return { type: ORDER_NAME, payload }
-};
-
-export const searchHS = (payload) => {
-  return { type: SEARCHHS, payload }
-};
-
-export const orderHs = (payload) => {
-  return { type: ORDER_HS, payload }
-};
-
-export const orderDiets = (payload) => {
-  return { type: ORDER_DIETS, payload }
-};
 
 export const getRecipeDetails = (id) => {
   return async (dispatch) => {
@@ -106,3 +79,28 @@ export const getAllDiets = () => {
     }
   }
 }
+
+// Filter - Ordering
+export const clearFilters = (payload) => {
+  return { type: CLEAR_FILTERS, payload }
+};
+
+export const filterName = (payload) => {
+  return { type: FILTER_NAME, payload }
+};
+
+export const orderName = (payload) => {
+  return { type: ORDER_NAME, payload }
+};
+
+export const filter_HS70 = (payload) => {
+  return { type: FILTER_HS70, payload }
+};
+
+export const orderHs = (payload) => {
+  return { type: ORDER_HS, payload }
+};
+
+export const orderDiets = (payload) => {
+  return { type: ORDER_DIETS, payload }
+};

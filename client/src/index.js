@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store/index";
 require("dotenv").config()
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
+axios.defaults.baseURL = process.env.REACT_APP_API || "https://food-henry-franschlatter.onrender.com";
 
 ReactDOM.render(
   <Provider store={store}>

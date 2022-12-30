@@ -11,7 +11,7 @@ const Filters = ({paginated, render, setRender}) => {
   const allDiets = useSelector(state => state.diets);
   
   function searchName(e) {
-    dispatch(actions.getAllRecipesName(e.target.value))
+    dispatch(actions.filterName(e.target.value))
   }
   
   function filterName(e) {
@@ -27,17 +27,17 @@ const Filters = ({paginated, render, setRender}) => {
   }
 
   async function filterDiets(e) {
-    await dispatch(actions.getAllRecipes())
-    await dispatch(actions.orderDiets(e.target.value))
+    dispatch(actions.orderDiets(e.target.value))
     paginated(1)
   }
 
   function clearFilters() {
-    window.location.href = "http://localhost:3000/home";
+    dispatch(actions.clearFilters())
+    paginated(1)
   }
 
-  function searchHs() {
-    dispatch(actions.searchHS())
+  function filter_Hs70() {
+    dispatch(actions.filter_HS70())
     paginated(1)
   }
  
@@ -62,8 +62,8 @@ const Filters = ({paginated, render, setRender}) => {
         <option value="1">1-100</option>
         <option value="100">100-1</option>
       </select>
+      <button onClick={() => filter_Hs70()}>Healthy food</button>
       <button onClick={() => clearFilters()}>Clear Filters</button>
-      <button onClick={() => searchHs()}>Search +70</button>
     </div>
   )
 }

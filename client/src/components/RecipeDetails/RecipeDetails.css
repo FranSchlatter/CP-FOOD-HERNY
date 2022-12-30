@@ -1,10 +1,11 @@
 .conteinter{
   background-color: beige;
-  height: 92vh;
+  min-height: 96vh;
 }
 
 .rec-main-api {
   width: 80%;
+  min-height: 96vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,7 +81,6 @@
   align-items: center;
   width: 100%;
   background-color: rgb(41, 41, 41);
-  position: absolute;
   bottom: 0;
   height: 60px;
 }
